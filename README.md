@@ -4,8 +4,13 @@ Este projeto visa aproximar o Microframework nos conceitos básicos do MVC.
 
 ## Configuração
 Renomear os arquivos:
+```
 phinx-sample.yml -> phinx.yml
+```
+
+```
 app/config/settings-sample.php -> app/config/settings.php
+```
 
 Conexão com banco de dados MySQL(MariaDB) para rodar as migrações: phinx.yml
 ```

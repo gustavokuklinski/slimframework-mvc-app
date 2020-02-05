@@ -25,6 +25,8 @@ require '../app/controller/static.php';
  * - "/s/out"         POST        Logout(if logged in with session)
  * - "/s/up"          GET         Create account post
  * - "/s/up"          POST        Create account
+ * - "/u/up/{id}/u"   GET         Update user account form
+ * - "/u/up/{id}/u"   POST        Update user account
  *
  */
 require '../app/controller/account.php';
