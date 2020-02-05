@@ -1,0 +1,35 @@
+<?php 
+session_start(); 
+if($_SESSION == null) {
+  echo "<meta http-equiv='Refresh' content='0; url=/s/in' />";
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Noticias </title>
+        <style type="text/css">body { font-family: Arial; }</style>
+  </head>
+  <body>
+   <h1> Notícias </h1>
+   <a href="/">Home</a> | <?php echo $_SESSION['name']; ?> |  <a href="/d">Dashboard</a> | <a href="/s/out">Logout</a>
+   <h2>Atualizar usuario</h2>
+   
+   <form method="post" action="/u/up/<?= $users->getId() ?>/u">
+    <label>Nome</label>
+    <input type="text" name="name" id="name" value="<?= $users->getName() ?>" />
+    <br />
+    <label>Email</label>
+    <input type="text" name="email" id="email" value="<?= $users->getEmail() ?>" />
+    <br />
+    <label>Senha</label>
+    <input type="password" name="password" id="password" required />
+    
+    <input type="hidden" name="id" id="id" value="<?= $users->getId() ?>" />
+    <br />
+    <input type="submit" value="Atualizar" />
+   </form> 
+   
+   </body>
+</html>

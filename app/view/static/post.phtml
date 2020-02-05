@@ -1,0 +1,21 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Noticias </title>
+    <style type="text/css">body { font-family: Arial; }</style>
+  </head>
+  <body>
+   <h1> Notícias </h1>
+  <a href="/">Home</a> | 
+   <?php if(!isset($_SESSION['name'])) { ?>
+      <a href="/s/in">Login</a> | <a href="/s/up">Cadastro</a>
+   <?php } else { ?>
+       <?php echo $_SESSION['name']; ?> | <a href="/d">Dashboard</a> | <a href="/s/out">Logout</a>
+   <?php } ?>
+   <h2><?= $posts->getTitle() ?></h2>
+   <small>Publicado em: <?= $posts->getUpdatedAt() ?></small>
+    <p><?= $posts->getContent() ?></p>
+  </body>
+</html>

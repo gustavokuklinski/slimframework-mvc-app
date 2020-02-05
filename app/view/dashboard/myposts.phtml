@@ -1,0 +1,25 @@
+<?php 
+session_start(); 
+if($_SESSION == null) {
+  echo "<meta http-equiv='Refresh' content='0; url=/s/in' />";
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Noticias </title>
+        <style type="text/css">body { font-family: Arial; }</style>
+  </head>
+  <body>
+   <h1> Notícias </h1>
+   <a href="/">Home</a> | <?php echo $_SESSION['name']; ?> |  <a href="/d">Dashboard</a> | <a href="/s/out">Logout</a>
+   <h2>Posts de:  <?php echo $_SESSION['name']; ?></h2>
+   <?php foreach($posts as $post): ?>
+    <h4><?= $post->getTitle() ?></h4>
+    <small>Publicado em: <?= $post->getUpdatedAt() ?></small>
+    <p><?= $post->getShortContent() ?></p>
+    <a href="<?= $router->pathFor('user-post-detail', ['id' => $post->getId()]) ?>">visualizar</a> | <a href="<?= $router->pathFor('user-update-post-detail', ['id' => $post->getId()]) ?>">Atualizar</a> <form method="post" action="<?= $router->pathFor('user-delete-post', ['id' => $post->getId()]) ?>"><input type="submit" value="Excluir" /></form>
+   <?php endforeach; ?>
+  </body>
+</html>

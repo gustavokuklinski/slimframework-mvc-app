@@ -1,0 +1,29 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Noticias </title>
+    <style type="text/css">body { font-family: Arial; }</style>
+  </head>
+  <body>
+   <h1> Notícias </h1>
+   <a href="/">Home</a> | 
+   <?php if(!isset($_SESSION['name'])) { ?>
+      <a href="/s/in">Login</a> | <a href="/s/up">Cadastro</a>
+   <?php } else { ?>
+       <?php echo $_SESSION['name']; ?> | <a href="/d">Dashboard</a> | <a href="/s/out">Logout</a>
+   <?php } ?>
+   
+   <h2> últimas notícias </h2>
+   
+  <?php foreach($posts as $post): ?>
+    <h4><?= $post->getTitle() ?></h4>
+    <small>Publicado em: <?= $post->getUpdatedAt() ?></small>
+    <p><?= $post->getShortContent() ?></p>
+    <a href="<?= $router->pathFor('post-detail', ['id' => $post->getId()]) ?>">visualizar</a>
+ 
+  <?php endforeach; ?>
+   
+   </body>
+</html>

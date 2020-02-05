@@ -1,0 +1,23 @@
+<?php 
+session_start(); 
+if($_SESSION == null) {
+  echo "<meta http-equiv='Refresh' content='0; url=/s/in' />";
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Noticias </title>
+        <style type="text/css">body { font-family: Arial; }</style>
+  </head>
+  <body>
+   <h1> Notícias </h1>
+   <a href="/">Home</a> | <?php echo $_SESSION['name']; ?> |  <a href="/d">Dashboard</a> | <a href="/s/out">Logout</a>
+   <h2>Dashboard</h2>
+   <a href="/d/n/<?= md5($_SESSION['id']) ?>">Meus posts</a><br />
+   <a href="/d/add">Adicionar noticia</a><br /><br />
+   <a href="/u/<?= $_SESSION['id'] ?>">Minha conta</a><br />
+   <a href="/u/up/<?= $_SESSION['id'] ?>/u">Atualizar minhas informações</a><br />
+  </body>
+</html>
